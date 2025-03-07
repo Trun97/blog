@@ -1,16 +1,18 @@
 import './Nav.css';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 function Nav() {
     return (
         <nav>
             <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/overzichtspagina">Alle posts</Link></li>
-                <li><Link to="/newpost">Nieuwe Post maken</Link></li>
+                <li><NavLink to="/" className={({ isActive}) => isActive === true ? 'active-link' :'default-link'}>Home</NavLink></li>
+                <li><NavLink to="/overzichtspagina" className={({ isActive}) => isActive === true ? 'active-link' :'default-link'}>Alle posts</NavLink></li>
+                <li><NavLink to="/newpost" className={({ isActive}) => isActive === true ? 'active-link' :'default-link'}>Nieuwe Post maken</NavLink></li>
             </ul>
         </nav>
     )
 }
 
 export default Nav
+
+
