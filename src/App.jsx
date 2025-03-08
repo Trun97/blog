@@ -6,7 +6,8 @@ import Nav from './pages/Nav/Nav.jsx';
 import Overzichtspagina from './pages/Overzichtspagina/Overzichtspagina.jsx';
 import NotFound from './pages/NotFound/NotFound.jsx';
 import NewPost from './pages/NewPost/NewPost.jsx';
-import BlogPost from "./pages/DetailPagina/DetailPagina.jsx";
+import BlogPost from "./components/BlogPost/BlogPost.jsx";
+
 
 function App() {
     return (
@@ -16,8 +17,8 @@ function App() {
                 <Route path="/" element={<Home/>} />
                 <Route path="/overzichtspagina" element={<Overzichtspagina/>} />
                 <Route path="/newpost" element={<NewPost/>} />
-                <Route path="/posts/:id" element={<BlogPost />} />
                 <Route path="*" element={<NotFound/>} />
+                <Route path="/posts/:id" element={<BlogPost />} />
             </Routes>
         </>
     )
