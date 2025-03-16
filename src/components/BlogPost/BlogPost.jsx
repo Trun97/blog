@@ -1,11 +1,34 @@
 import { Link, useParams } from "react-router-dom";
-import posts from "../../constants/data.json";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import formatDate from "../../helpers/formatDate/formatDate.jsx";
 
 function BlogPost() {
     const { id } = useParams();
-    const post = posts.find(post => post.id === id);
+    const [post, setPost] = useState(null);
+    const [error, setError] = useState("");
 
+
+        async function fetchPost() {
+            try {
+                const response = await axios.get(`http://localhost:3000/posts/${id}`);
+                setPost(response.data || null);
+            } catch (err) {
+                setError(`Er is iets misgegaan: ${err.message}. Probeer het later opnieuw.`);
+                console.error(err);
+            }
+        }
+
+
+    useEffect(() => {fetchPost();}, []);
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
+    if (!post) {
+        return <p>Deze blogpost bestaat niet. Ga terug naar de <Link to="/overzichtspagina">overzichtspagina</Link>.</p>;
+    }
 
     return (
         <div>
@@ -20,3 +43,4 @@ function BlogPost() {
 }
 
 export default BlogPost;
+

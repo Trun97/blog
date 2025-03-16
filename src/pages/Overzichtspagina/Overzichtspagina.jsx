@@ -1,13 +1,12 @@
 import './Overzichtspagina.css';
 import { Link } from "react-router-dom";
-// import posts from "../../constants/data.json";
 import axios from "axios";
 import {useEffect, useState} from "react";
 
 
 function Overzichtspagina() {
     const [blogs, setBlogs] = useState([]);
-    const [error, setError] = useState("")
+    const [error, setError] = useState("");
 
     async function fetchData() {
         try {
