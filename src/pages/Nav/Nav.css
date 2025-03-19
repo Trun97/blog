@@ -1,0 +1,14 @@
+
+nav ul a,
+nav ul a:visited {
+    color: red;
+    text-decoration: none;
+}
+
+.default-link {
+    background-color: yellow;
+}
+
+.active-link {
+    background-color: #38E991;
+}
