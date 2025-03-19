@@ -1,6 +1,7 @@
 import './NewPost.css';
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 function NewPost() {
     const [formTitle, setFormTitle] = useState("");
@@ -10,7 +11,6 @@ function NewPost() {
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
-
 
     function handleSubmit (e) {
         e.preventDefault();
@@ -22,17 +22,19 @@ function NewPost() {
             setError("De blogpost moet minimaal 300 en maximaal 2000 karaktes bevatten")
         }
 
-
         const postInformation = {
             title: formTitle,
             subtitle: formSubtitle,
             content: formBlogpost,
+            created: new Date().toISOString(),
             author: formNames,
+            readTime: 5,
             comments: 0,
             shares: 0
         }
         navigate("/overzichtspagina");
         console.log(postInformation);
+
     }
 
 
